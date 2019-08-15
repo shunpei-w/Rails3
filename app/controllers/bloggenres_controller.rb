@@ -6,9 +6,9 @@ class BloggenresController < ApplicationController
   end
 
   def add
-    @Bloggenre = Bloggenre.new
+    @bloggenre = Bloggenre.new
     if request.post? then
-      @bloggenres = Bloggenre.create bloggenre_params
+      @bloggenre = Bloggenre.create bloggenre_params
       redirect_to "/bloggenres"
     end
   end
@@ -23,6 +23,6 @@ class BloggenresController < ApplicationController
 
   private
   def bloggenre_params
-    params.redirect(:bloggenre).permit(:name,:memo)
+    params.require(:bloggenre).permit(:name,:memo)
   end
 end

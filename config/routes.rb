@@ -1,9 +1,23 @@
 Rails.application.routes.draw do
+  resources :questionary_results
+  resources :questionary_choices
+  resources :questionary_items
+  resources :questionaries
+  resources :answers
+  resources :questions
+  resources :mycontacts
+
+  get "questionary_results/calc/:id", to: "questionary_results#calc"
+  get "questionary_choices/new/:id",to: "questionary_choices#new"
+  get "questionary_items/new/:id",to: "questionary_items#new"
+  post "questionaries/:id", to: "questionaries#sendform"
+
+
   get 'blogs/index'
   get "blogs", to:"blogs#index"
   get "blogs/:page",to:"blogs#index"
   
-  get 'blogs/genre:id',to: "blogs#genre"
+  get 'blogs/genre/:id',to: "blogs#genre"
   get 'blogs/genre/:id/:page',to: "blogs#genre"
 
   get 'blogs/show/:id',to: "blogs#show"
@@ -19,7 +33,7 @@ Rails.application.routes.draw do
   post "blogposts/add"
 
   get 'blogposts/:id',to: "blogposts#edit"
-  patch "bligposts/:id",to: "blogposts#edit"
+  patch "blogposts/:id",to: "blogposts#edit"
 
   get "blogposts/delete"
 
@@ -27,7 +41,7 @@ Rails.application.routes.draw do
   get "bloggenres",to: "bloggenres#index"
   
   get 'bloggenres/add'
-  post "boggenres/add"
+  post "bloggenres/add"
 
   get 'bloggenres/:id',to: "bloggenres#edit"
   patch "bloggenres/:id",to: "bloggenres#edit"

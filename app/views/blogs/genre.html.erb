@@ -1,5 +1,5 @@
 <h2>※「<%= @genre.name %>」の投稿</h2>
-<% @date.each do |obj| %>
+<% @data.each do |obj| %>
     <h3 class="top_title"><a href="/blogs/show/<%= obj.id%>">
         <%= obj.title %></a></h3>
     <p class="top_read"><%= obj.read %><span class="created">
@@ -8,8 +8,10 @@
 <% end %>
 <div class="navigate">
     <% if @page_num > 0 then %>
-        <a href="/blogs/genre/<%= @genre.id.to_s + "/" + (@page_num - 1).to_s %>">＜＜前のページ</a>
+        <a href="/blogs/genre/<%= @genre.id.to_s + "/" +
+         (@page_num - 1).to_s %>">＜＜前のページ</a>
         <% end %>
         <span></span>
-        <a href="/blogs/genre/<%= @genre.id.to_s + (@page_num + 1).to_s %>">次のページ＞＞</a>
+        <a href="/blogs/genre/<%= @genre.id.to_s + "/" + (@page_num + 1)
+        .to_s %>">次のページ＞＞</a>
 </div>
